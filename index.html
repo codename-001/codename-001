@@ -17,6 +17,7 @@
       color: white;
       padding-top: 20px;
       position: fixed;
+      transition: transform 0.3s ease;
     }
 
     .sidebar a {
@@ -35,10 +36,46 @@
       padding: 20px;
       flex-grow: 1;
     }
+
+    .menu-toggle {
+      display: none;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    /* Untuk tampilan kecil (mobile) */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0);
+      }
+
+      .menu-toggle {
+        display: block;
+        color: black;
+      }
+
+      .content {
+        margin-left: 0;
+        padding-top: 60px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="sidebar">
+  <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+  <div class="sidebar" id="sidebar">
     <a href="index.html">Beranda</a>
     <a href="about.html">Tentang</a>
     <a href="projects.html">Proyek</a>
@@ -48,7 +85,13 @@
   <div class="content">
     <h1>Halo Dunia!</h1>
     <p>Ini adalah website pertamaku dengan sidebar!</p>
-    <p>*Uji Coba*</p>
   </div>
+
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('active');
+    }
+  </script>
 </body>
 </html>
