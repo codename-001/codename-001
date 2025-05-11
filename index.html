@@ -7,7 +7,6 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      display: flex;
     }
 
     .sidebar {
@@ -17,38 +16,11 @@
       color: white;
       padding-top: 20px;
       position: fixed;
+      top: 0;
+      left: 0;
+      transform: translateX(0);
       transition: transform 0.3s ease;
-    }
-
-    .sidebar a {
-      display: block;
-      color: white;
-      text-decoration: none;
-      padding: 12px 20px;
-    }
-
-    .sidebar a:hover {
-      background-color: #444;
-  <!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Sidebar Navigasi</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      display: flex;
-    }
-
-    .sidebar {
-      width: 200px;
-      background-color: #1f1f1f;
-      height: 100vh;
-      color: white;
-      padding-top: 20px;
-      position: fixed;
-      transition: transform 0.3s ease;
+      z-index: 2;
     }
 
     .sidebar a {
@@ -65,23 +37,23 @@
     .content {
       margin-left: 200px;
       padding: 20px;
-      flex-grow: 1;
+      transition: margin-left 0.3s ease;
     }
 
     .menu-toggle {
       display: none;
-      position: absolute;
+      position: fixed;
       top: 15px;
       left: 15px;
       font-size: 24px;
       background: none;
       border: none;
-      color: white;
-      z-index: 2;
+      z-index: 3;
+      color: #1f1f1f;
       cursor: pointer;
     }
 
-    /* Untuk tampilan kecil (mobile) */
+    /* Mobile styles */
     @media (max-width: 768px) {
       .sidebar {
         transform: translateX(-100%);
@@ -93,12 +65,15 @@
 
       .menu-toggle {
         display: block;
-        color: black;
       }
 
       .content {
         margin-left: 0;
         padding-top: 60px;
+      }
+
+      .content.shifted {
+        margin-left: 200px;
       }
     }
   </style>
@@ -113,7 +88,7 @@
     <a href="contact.html">Kontak</a>
   </div>
 
-  <div class="content">
+  <div class="content" id="content">
     <h1>Halo Dunia!</h1>
     <p>Ini adalah website pertamaku dengan sidebar!</p>
   </div>
@@ -121,7 +96,9 @@
   <script>
     function toggleMenu() {
       const sidebar = document.getElementById('sidebar');
+      const content = document.getElementById('content');
       sidebar.classList.toggle('active');
+      content.classList.toggle('shifted');
     }
   </script>
 </body>
