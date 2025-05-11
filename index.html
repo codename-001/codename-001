@@ -29,6 +29,37 @@
 
     .sidebar a:hover {
       background-color: #444;
+  <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Sidebar Navigasi</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+    }
+
+    .sidebar {
+      width: 200px;
+      background-color: #1f1f1f;
+      height: 100vh;
+      color: white;
+      padding-top: 20px;
+      position: fixed;
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 12px 20px;
+    }
+
+    .sidebar a:hover {
+      background-color: #444;
     }
 
     .content {
@@ -49,6 +80,8 @@
       z-index: 2;
       cursor: pointer;
     }
+
+    /* Untuk tampilan kecil (mobile) */
     @media (max-width: 768px) {
       .sidebar {
         transform: translateX(-100%);
